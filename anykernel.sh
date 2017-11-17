@@ -55,6 +55,15 @@ patch_fstab fstab.tuna /cache ext4 options "barrier=1" "barrier=0,nomblk_io_subm
 patch_fstab fstab.tuna /data ext4 options "data=ordered" "nomblk_io_submit,data=writeback";
 append_file fstab.tuna "usbdisk" fstab;
 
+# Add Spectrum Profile
+ui_print "Tweaking Kernel...";
+found=$(find init.rc -type f | xargs grep -oh "import /init.tweak.rc");
+if [ "$found" != 'import /init.tweak.rc' ]; then
+	#append the new lines for this option at the bottom
+        echo "" >> init.rc
+	echo "import /init.tweak.rc" >> init.rc
+fi
+
 # end ramdisk changes
 
 write_boot;
