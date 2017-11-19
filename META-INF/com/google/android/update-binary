@@ -411,6 +411,18 @@ ui_print "Installing...";
 CORE=$($BB grep -oE 'ak.*core.sh' anykernel.sh);
 test -f tools/$CORE || $BB ln -s $AKHOME/tools/ak*-core.sh $AKHOME/tools/$CORE;
 PATH="$AKHOME/bin:$PATH" home=$AKHOME $BB ash anykernel.sh $2;
+ui_print " ";
+ui_print "FF    FF   UUUUUUUU CC      CC  KKKKKKKKKK";
+ui_print "FF   FF   UUUUUUUU  CC      CC  KKKKKKKKKK";
+ui_print "FF  FF   UU         CC      CC  KK";
+ui_print "FF FF    UU         CC      CC  KK";
+ui_print "FFFF     UU         CC      CC  KK";
+ui_print "FFFF     UU         CC      CC  KKKKKKKKK";
+ui_print "FF FF    UU         CC      CC  KKKKKKKKK";
+ui_print "FF  FF   UU         CC      CC  KK";
+ui_print "FF   FF   UUUUUUUU   CCCCCCCC   KK";
+ui_print "FF    FF   UUUUUUUU   CCCCCC    KK";
+
 if [ $? != 0 ]; then
   abort;
 fi;
