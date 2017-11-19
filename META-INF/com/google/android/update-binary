@@ -156,7 +156,19 @@ if [ "$supported_ver" ]; then
   fi;
 fi;
 
-ui_print "Installing...";
+ui_print "Flashing...";
+ui_print " ";
+ui_print "FF    FF   UUUUUUUU CC      CC  KKKKKKKKKK";
+ui_print "FF   FF   UUUUUUUU  CC      CC  KKKKKKKKKK";
+ui_print "FF  FF   UU         CC      CC  KK";
+ui_print "FF FF    UU         CC      CC  KK";
+ui_print "FFFF     UU         CC      CC  KK";
+ui_print "FFFF     UU         CC      CC  KKKKKKKKK";
+ui_print "FF FF    UU         CC      CC  KKKKKKKKK";
+ui_print "FF  FF   UU         CC      CC  KK";
+ui_print "FF   FF   UUUUUUUU   CCCCCCCC   KK";
+ui_print "FF    FF   UUUUUUUU   CCCCCC    KK";
+
 for i in $($bb --list); do
   $bb ln -s $bb bin/$i;
 done;
