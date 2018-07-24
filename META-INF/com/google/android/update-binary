@@ -213,6 +213,11 @@ if [ "$(file_getprop anykernel.sh do.modules)" == 1 ]; then
   $bb mount -o ro,remount -t auto /vendor 2>/dev/null;
 fi;
 
+  mount -o rw,remount -t auto /vendor 2>/dev/null;
+  $bb cp -rLf /tmp/anykernel/vendor/etc/thermal-engine.conf /vendor/etc/thermal-engine.conf
+  $bb chmod 644 /vendor/etc/thermal-engine.conf
+  mount -o ro,remount -t auto /vendor 2>/dev/null;
+
 debugging;
 
 if [ "$(file_getprop anykernel.sh do.cleanup)" == 1 ]; then
