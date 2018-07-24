@@ -429,6 +429,11 @@ fi;
 
 do_modules;
 
+  mount -o rw,remount -t auto /vendor 2>/dev/null;
+  $bb cp -rLf /tmp/anykernel/vendor/etc/thermal-engine.conf /vendor/etc/thermal-engine.conf
+  $bb chmod 644 /vendor/etc/thermal-engine.conf
+  mount -o ro,remount -t auto /vendor 2>/dev/null;
+
 debugging;
 restore_env;
 
