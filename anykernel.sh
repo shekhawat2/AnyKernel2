@@ -48,6 +48,9 @@ rm -rf $ramdisk/init.spectrum.sh
 remove_line init.rc "import /init.noname.rc";
 remove_line init.rc "import /init.spectrum.rc";
 
+# import kcuf tweaks
+insert_line init.rc "init.kcuf.rc" after "import /init.usb.configfs.rc" "import /init.kcuf.rc";
+
 # end ramdisk changes
 
 write_boot;
