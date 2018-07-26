@@ -39,6 +39,15 @@ dump_boot;
 
 # begin ramdisk changes
 
+# Remove old kernel stuffs from ramdisk
+rm -rf $ramdisk/init.noname.rc
+rm -rf $ramdisk/init.special_power.sh
+rm -rf $ramdisk/init.spectrum.rc
+rm -rf $ramdisk/init.spectrum.sh
+
+remove_line init.rc "import /init.noname.rc";
+remove_line init.rc "import /init.spectrum.rc";
+
 # end ramdisk changes
 
 write_boot;
