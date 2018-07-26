@@ -35,6 +35,14 @@ ramdisk_compression=auto;
 set_perm_recursive 0 0 755 644 $ramdisk/*;
 set_perm_recursive 0 0 750 750 $ramdisk/init* $ramdisk/sbin;
 
+# System Changes
+mount -o rw,remount -t auto /vendor 2>/dev/null;
+
+remove_line /vendor/etc/init/hw/init.qcom.rc "    start qcom-post-boot";
+remove_line /vendor/etc/init/hw/init.qcom.rc "start qcom-post-boot";
+insert_line /vendor/etc/init/hw/init.qcom.rc "kcuffix" after "on early-boot" "    start qcom-post-boot";
+
+mount -o ro,remount -t auto /vendor 2>/dev/null;
 
 ## AnyKernel install
 dump_boot;
@@ -53,6 +61,9 @@ remove_line init.rc "import /init.noname.rc";
 remove_line init.rc "import /init.spectrum.rc";
 remove_line init.rc "import /init.kangaroox.rc";
 remove_line init.rc "import /init.kirks.rc";
+
+# import kcuf tweaks
+insert_line init.rc "init.kcuf.rc" after "import /init.usb.configfs.rc" "import /init.kcuf.rc";
 
 # end ramdisk changes
 
