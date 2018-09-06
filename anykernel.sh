@@ -33,6 +33,14 @@ ramdisk_compression=auto;
 chmod -R 750 $ramdisk/*;
 chown -R root:root $ramdisk/*;
 
+# System Changes
+mount -o rw,remount -t auto /vendor 2>/dev/null;
+
+remove_line /vendor/etc/init/hw/init.qcom.rc "    start qcom-post-boot";
+remove_line /vendor/etc/init/hw/init.qcom.rc "start qcom-post-boot";
+insert_line /vendor/etc/init/hw/init.qcom.rc "kcuffix" after "on early-boot" "    start qcom-post-boot";
+
+mount -o ro,remount -t auto /vendor 2>/dev/null;
 
 ## AnyKernel install
 dump_boot;
