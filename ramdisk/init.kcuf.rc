@@ -39,3 +39,14 @@ on property:sys.boot_completed=1
 
 # Enable DT2W
     write /sys/devices/soc/c175000.i2c/i2c-1/1-0020/input/input2/wake_gesture 1
+
+# Core_ctl hotplug
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
+    write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 95
+    write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 99
+
+# Increase color saturation
+    write /sys/devices/platform/kcal_ctrl.0/kcal_sat 275
+
+# Disable thermal core control
+    write /sys/module/msm_thermal/core_control/enabled 0
