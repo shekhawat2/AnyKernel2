@@ -41,19 +41,6 @@ dump_boot;
 
 # begin ramdisk changes
 
-# Remove old kernel stuffs from ramdisk
-rm -rf $ramdisk/init.noname.rc
-rm -rf $ramdisk/init.special_power.sh
-rm -rf $ramdisk/init.spectrum.rc
-rm -rf $ramdisk/init.spectrum.sh
-rm -rf $ramdisk/init.kangaroox.rc
-rm -rf $ramdisk/init.kirks.rc
-
-remove_line init.rc "import /init.noname.rc";
-remove_line init.rc "import /init.spectrum.rc";
-remove_line init.rc "import /init.kangaroox.rc";
-remove_line init.rc "import /init.kirks.rc";
-
 # end ramdisk changes
 
 write_boot;
